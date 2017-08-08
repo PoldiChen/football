@@ -1,2 +1,2 @@
 # football
-a demo project
+springmvc+hibernate+jdbctemplate
