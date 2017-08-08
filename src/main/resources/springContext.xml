@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:mvc="http://www.springframework.org/schema/mvc"  
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:aop="http://www.springframework.org/schema/aop"  
+    xmlns:tx="http://www.springframework.org/schema/tx"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+                        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd   
+                        http://www.springframework.org/schema/mvc   
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd   
+                        http://www.springframework.org/schema/context   
+                        http://www.springframework.org/schema/context/spring-context-4.0.xsd   
+                        http://www.springframework.org/schema/aop   
+                        http://www.springframework.org/schema/aop/spring-aop-4.0.xsd   
+                        http://www.springframework.org/schema/tx   
+                        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">  
+                          
+    <context:component-scan base-package="com.tplink.mic.basement.manufacture.controller" />  
+    <context:component-scan base-package="com.tplink.mic.basement.manufacture.dao" />  
+    <context:component-scan base-package="com.tplink.mic.basement.manufacture.aop" />
+    
+    <!-- 搜索spring控件 -->
+    <context:component-scan base-package="com.football.requester"></context:component-scan>
+    <context:component-scan base-package="com.football.controller"></context:component-scan>
+    <context:component-scan base-package="com.football.dao"></context:component-scan>
+    
+    <tx:annotation-driven transaction-manager="transactionManager" />
+    
+    <bean id="transactionManager"  class="org.springframework.orm.jpa.JpaTransactionManager">  
+     	<property name="dataSource" ref="dataSource" />  
+     	<property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+    
+    <!-- 视图页面配置 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix">
+            <value>/WEB-INF/views/</value>
+        </property>
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+    </bean>
+    
+    <bean id="httpClientFactory" class="org.springframework.http.client.SimpleClientHttpRequestFactory">  
+            <property name="connectTimeout"  value="3000"/>
+            <property name="readTimeout"  value="3000"/>
+    </bean>  
+         
+    <!--RestTemplate-->  
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">  
+        <constructor-arg ref="httpClientFactory"/>  
+    </bean>
+    
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+    	<property name="user" value="root"></property>
+    	<property name="password" value="123456"></property>
+    	<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/football"></property>
+    	<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+    </bean>
+    
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" lazy-init="false">
+        <!-- 注入datasource，给sessionfactoryBean内setdatasource提供数据源 -->
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+        <!-- //加载实体类的映射文件位置及名称 -->
+        <property name="mappingLocations" value="classpath:*.hbm.xml"></property>
+    </bean> 
+    
+</beans>
