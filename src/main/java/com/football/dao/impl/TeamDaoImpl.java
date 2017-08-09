@@ -1,25 +1,11 @@
 package com.football.dao.impl;
 
-import java.util.List;
-
 import javax.annotation.Resource;
-
 import org.hibernate.SessionFactory;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
-
 import com.football.dao.inter.ITeamDao;
 import com.football.pojo.Team;
-//import com.tplink.mic.basement.manufacture.pojo.DeviceIdGenInfo;
-
-import java.util.List;
-import javax.annotation.Resource;
-
-
 import org.hibernate.Query;
-import org.hibernate.SessionFactory;
-import org.springframework.stereotype.Repository;
 
 //×¢Èë
 @Component("teamDao")
