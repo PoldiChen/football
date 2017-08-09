@@ -1,54 +1,49 @@
-/**
- * @project football
- * @package com.football.dao.impl
- * @file TeamDaoImpl.java
- * @author chenxihong
- */
 package com.football.dao.impl;
 
-import java.io.Serializable;
+import java.util.List;
+
+import javax.annotation.Resource;
 
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
-import com.football.dao.inter.ITeamDaoInter;
+import com.football.dao.inter.ITeamDao;
 import com.football.pojo.Team;
+//import com.tplink.mic.basement.manufacture.pojo.DeviceIdGenInfo;
 
-/** 
- * Class: TeamDaoImpl
- * date: 2017年8月5日 下午11:06:26
- * @author chenxihong 
- * @version  
- * @since JDK 1.8
+/**
+ * DeviceID鏁版嵁鐨刣ao灞傛帴鍙ｅ疄鐜扮被
+ * 
+ * @since: JDK 1.7
+ * @History: 2017-2-25 chenxihong_w7141@tp-link.com.cn create
  */
-@Repository
-public class TeamDaoImpl implements ITeamDaoInter {
-	
-	@Autowired
-	private SessionFactory sessionFactory;
+import java.util.List;
+import javax.annotation.Resource;
 
-	/* (non-Javadoc)
-	 * @see com.football.dao.inter.TeamDaoInter#save(com.football.pojo.Team)
-	 */
-	@Transactional(value = "transactionManager")
-	public int save(Team team) {
-		// TODO Auto-generated method stub
-		System.out.println(sessionFactory);
-		Serializable serializable = sessionFactory.getCurrentSession().save(team);
-		System.out.println(serializable);
-		return 0;
-	}
 
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
-	
-	
+//注入
+@Component("teamDao")
+public class TeamDaoImpl implements ITeamDao {
+
+    //注入已在spring-common.xml中配制好的sessionFactory
+    @Resource(name = "sessionFactory")
+    private SessionFactory sessionFactory;
+
+    @Override
+    public Team getTeamById(int id) {
+        System.out.println("getTeamById");
+        System.out.println(sessionFactory);
+        String hql = "from Team t where t.id=?";
+        Query query = sessionFactory.openSession().createQuery(hql);
+        query.setInteger(0, id);
+        return (Team) query.uniqueResult();
+    }
+
 
 }
