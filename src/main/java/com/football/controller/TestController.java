@@ -1,12 +1,3 @@
-/*****************************************************************************
- * Copyright (C) 2017 TP-LINK TECHNOLOGIES CO.,LTD. All Rights Reserved.
- * 本软件由普联技术有限公司开发，其他任何个人、团体不得使用、复制、修改或发布本软件.
- * @FileName: TestController.java
- * @Description:
- * @Version: since 1.0.0
- * @History:
- * 2017年8月9日 chenxihong_w7141@tp-link.com.cn create
- *****************************************************************************/
 package com.football.controller;
 
 import java.util.List;
@@ -29,11 +20,6 @@ import com.football.pojo.Team;
 
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 
-/**
- * @since: JDK 1.7
- * @History:
- * 2017年8月9日 chenxihong_w7141@tp-link.com.cn create
- */
 @RestController
 @RequestMapping(value = "/test", produces = "application/json;charset=utf-8")
 public class TestController {

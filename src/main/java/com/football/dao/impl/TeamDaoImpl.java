@@ -13,12 +13,6 @@ import com.football.dao.inter.ITeamDao;
 import com.football.pojo.Team;
 //import com.tplink.mic.basement.manufacture.pojo.DeviceIdGenInfo;
 
-/**
- * DeviceID数据的dao层接口实现类
- * 
- * @since: JDK 1.7
- * @History: 2017-2-25 chenxihong_w7141@tp-link.com.cn create
- */
 import java.util.List;
 import javax.annotation.Resource;
 
