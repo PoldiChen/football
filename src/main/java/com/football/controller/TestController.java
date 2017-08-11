@@ -18,8 +18,14 @@ public class TestController {
         String xml = "src/main/webapp/WEB-INF/spring-mvc.xml";
         ApplicationContext applicationContext = new FileSystemXmlApplicationContext(xml);
         TeamDaoImpl teamDaoImpl = (TeamDaoImpl) applicationContext.getBean("teamDao");
-        Team team = teamDaoImpl.getTeamById(1);
+        
+        Team team = teamDaoImpl.getTeamById(2);
         System.out.println(team.getName());
+        
+//        Team team = new Team();
+//        team.setName("test");
+//        int result = teamDaoImpl.createTeam(team);
+//        System.out.println(result);
 //        ConfigDaoImpl configDaoImpl = (ConfigDaoImpl) applicationContext.getBean("configDao");
     }
 

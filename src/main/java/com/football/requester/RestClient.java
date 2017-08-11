@@ -6,7 +6,8 @@
  */
 package com.football.requester;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -21,6 +22,7 @@ import com.alibaba.fastjson.JSONObject;
  * @version  
  * @since JDK 1.8
  */
+@SuppressWarnings("restriction")
 @Component("restClient")
 public class RestClient {
 	
@@ -28,7 +30,7 @@ public class RestClient {
 		test();
 	}
 
-	@Autowired
+	@Resource(name = "restTemplate")
     private RestTemplate template;
 	
     public RestTemplate getTemplate() {
@@ -39,7 +41,7 @@ public class RestClient {
 		this.template = template;
 	}
 
-	private final static String url = "http://v.juhe.cn/football/scorerank.php?league_id=128&key=4e4fbf09967f13c3dcf5732eb7b8c586";
+	private final static String url = "";
     
     public static void test() {
     	RestTemplate template = new RestTemplate();

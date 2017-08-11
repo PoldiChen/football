@@ -5,6 +5,13 @@ public class Resp {
     private int code;
     private Object data;
     private String message;
+    
+    public Resp() {
+    	this.code = 0;
+    	this.message = "ok";
+    	this.data = null;
+    }
+    
     /**
      * @return the code
      */

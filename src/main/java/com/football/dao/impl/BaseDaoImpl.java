@@ -1,17 +1,18 @@
 package com.football.dao.impl;
 
 import javax.annotation.Resource;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.hibernate.SessionFactory;
 import com.football.dao.inter.IBaseDao;
 
+@SuppressWarnings("restriction")
 public class BaseDaoImpl implements IBaseDao {
     
-    @Resource(name = "jdbcTemplate")
-    protected JdbcTemplate jdbcTemplate;
+    @Resource(name = "sessionFactory")
+    protected SessionFactory sessionFactory;
 
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
-
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+    
 
 }
