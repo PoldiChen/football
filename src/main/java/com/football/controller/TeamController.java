@@ -31,16 +31,16 @@ public class TeamController {
         resp.setMessage("ok");
         return resp;
     }
-    
+
     @ResponseBody
     @RequestMapping(value = "", method = RequestMethod.POST)
     public Resp createTeam(@RequestBody String teamStr) {
-    	System.out.println(teamStr);
-    	Team team = JSON.parseObject(teamStr, Team.class);
-    	int result = teamDao.createTeam(team);
-    	System.out.println(result);
-    	Resp resp = new Resp();
-    	return resp;
+        System.out.println(teamStr);
+        Team team = JSON.parseObject(teamStr, Team.class);
+        int result = teamDao.createTeam(team);
+        System.out.println(result);
+        Resp resp = new Resp();
+        return resp;
     }
-    
+
 }

@@ -16,11 +16,10 @@ public class TeamDaoImpl extends BaseDaoImpl implements ITeamDao {
         return (Team) query.uniqueResult();
     }
 
-	public int createTeam(Team team) {
-		Serializable serializable = sessionFactory.openSession().save(team);
-		System.out.println(serializable);
-		return 0;
-	}
-
+    public int createTeam(Team team) {
+        Serializable serializable = sessionFactory.openSession().save(team);
+        System.out.println(serializable);
+        return 0;
+    }
 
 }

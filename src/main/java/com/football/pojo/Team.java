@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "team")
 public class Team {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(length = 10)
@@ -27,7 +27,8 @@ public class Team {
     }
 
     /**
-     * @param id the id to set
+     * @param id
+     *            the id to set
      */
     public void setId(String id) {
         this.id = id;
@@ -41,11 +42,11 @@ public class Team {
     }
 
     /**
-     * @param name the name to set
+     * @param name
+     *            the name to set
      */
     public void setName(String name) {
         this.name = name;
     }
-
 
 }

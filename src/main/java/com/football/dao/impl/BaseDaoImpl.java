@@ -6,13 +6,12 @@ import com.football.dao.inter.IBaseDao;
 
 @SuppressWarnings("restriction")
 public class BaseDaoImpl implements IBaseDao {
-    
+
     @Resource(name = "sessionFactory")
     protected SessionFactory sessionFactory;
 
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
-    
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
 }
