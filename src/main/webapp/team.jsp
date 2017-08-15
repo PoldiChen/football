@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -10,33 +11,20 @@
 
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="#">football</a>
-    </div>
-    <div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="#">team</a></li>
-            <li><a href="#">ranking</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    others <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">aa</a></li>
-                    <li><a href="#">bb</a></li>
-                    <li><a href="#">cc</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">dd</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">ee</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    </div>
-</nav>
+	<table class="table">
+		<tr><th>NAME</th><th>CITY</th><th>OPERATE</th></tr>
+		<c:forEach items="${teams}" var="t">  
+		<tr>
+    		<td>${t.name}</td>  
+    		<td>${t.city}</td>
+    		<td>
+    			<button class="btn btn-default" onclick="editTeam(this)" data="${t.id}">edit</button>
+    			<button class="btn btn-default" onclick="deleteTeam(this)" data="${t.id}">delete</button>
+    			<!-- <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> -->
+    		</td>
+		</tr>  
+		</c:forEach>  
+	</table>
 
 </body>
 </html>

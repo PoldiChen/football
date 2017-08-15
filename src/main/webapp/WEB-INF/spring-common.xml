@@ -19,23 +19,20 @@
     
     <bean id="restTemplate" class="org.springframework.web.client.RestTemplate"></bean>
 
-    <!-- 配置数据源 -->
     <bean id="dataSource"
         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-        <!-- 换成自己的数据库路径 -->
         <property name="url" value="jdbc:mysql://localhost/football"></property>
         <property name="username" value="root"></property>
-        <property name="password" value="123456"></property>
+        <property name="password" value="chenxihong"></property>
     </bean>
-    <!-- 配置SessionFactory -->
+
     <bean id="sessionFactory"
         class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <!-- packagesToScan 扫描包所在路径（name中的内容其实是个关键字，可以扫描一整个包） -->
         <property name="packagesToScan">
             <list>
-                <!-- 此处可添加多个entity -->
                 <value>com.football.pojo</value>
             </list>
         </property>

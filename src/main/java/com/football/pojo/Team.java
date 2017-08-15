@@ -18,6 +18,9 @@ public class Team {
 
     @Column(length = 100)
     private String name;
+    
+    @Column(length = 100)
+    private String city;
 
     /**
      * @return the id
@@ -49,4 +52,13 @@ public class Team {
         this.name = name;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    
 }
